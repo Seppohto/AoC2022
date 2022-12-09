@@ -1,0 +1,12 @@
+-- i have one table called Books with book details like rf_id: string, book_title: string, publish_date: long, author: string, language: string, number_of_pages: long, weight_gram: long
+-- i have another table called Shelves with shelf details like shelf: long, rf_ids: dynamic, total_weight: long
+-- find the books which are not in any shelf in kusto query language
+
+
+SELECT * FROM Books WHERE rf_id NOT IN (SELECT rf_ids FROM Shelves)
+
+-- show leftouter join of Books rf_id to Shelves rf_ids in kusto query language turn rf_ids from dynamic to string
+
+
+Books | join kind=leftouter (Shelves) on rf_id | extend rf_ids = tostring(rf_ids)
+
