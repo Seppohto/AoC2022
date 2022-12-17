@@ -321,3 +321,16 @@ count = 0
 #use set to remove duplicates
 print(len(unique_tail_positions))
 #print s, h and knots in a grid
+for i in range(-20,20):
+    for j in range(-20,20):        
+        if [i,j] == s:
+            print('s', end='')
+        elif [i,j] == knot_dict['h']:
+            print('H', end='')
+        #print number corresponding to knot
+        elif [i,j] in knot_dict.values():
+            print(knot_dict.keys()[knot_dict.values()], end='')
+        else:
+            print('.', end='')
+    print()
+print()
